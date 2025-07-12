@@ -1,0 +1,47 @@
+services:
+  web:
+    build:
+      context: ./copilot-study
+    container_name: web-prod
+    ports:
+      - "80:3000"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/home/bun/data
+      - ./data/config:/home/bun/data/config
+    environment:
+      - LOG_LEVEL=info # valid options: (undefined) | info | debug | warning | error | fatal
+      - BETTER_AUTH_SECRET=ngJuz7MgddaJTjcMpUbdPLEYGjvattDaAVoe4CFbHsrT34hL
+      - SOCKET_PATH=/home/bun/data/config/api.sock
+    healthcheck:
+      test: curl --fail http://localhost:80/api/admin/health || exit 1
+      interval: 3s
+      retries: 100
+      start_period: 3s
+      timeout: 5s
+  
+  crawler:
+    build:
+      context: ./crawlz
+    container_name: crawler-prod
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/home/bun/data
+      - ./data/config:/home/bun/data/config
+    environment:
+      - LOG_LEVEL=info # valid options: (undefined) | info | debug | warning | error | fatal
+      - DEBUG=false
+      - SOCKET_PATH=/home/bun/data/config/api.sock
+      - CRAWLZ_DATA_ROOT_DIR=/home/bun/data/archive
+      - CRAWLZ_ID_DATABASE_PATH=/home/bun/data/id_database.db
+      - CRAWLZ_MAX_CONCURRENT_TASKS=3
+      - CRAWLZ_IDLE_POLL_INTERVAL_SECONDS=20
+      - CRAWLZ_TASK_QUEUE_URL=unix:/home/bun/data/config/api.sock:/api/internal/jobs/open
+      - CRAWLZ_PROGRESS_API_ENDPOINT=unix:/home/bun/data/config/api.sock:/api/internal/jobs/progress
+      - CRAWLZ_TOKEN_REFRESH_API_ENDPOINT=unix:/home/bun/data/config/api.sock:/api/internal/refresh-token
+      - CRAWLZ_HASHING_SECRET_KEY=1234567890123456789012345678901234567890123456789012345678901234
+      - CRAWLZ_HASHING_ALGORITHM=sha256
+    depends_on:
+      web:
+        condition: service_healthy
+      

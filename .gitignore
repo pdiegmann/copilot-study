@@ -1,0 +1,6 @@
+.DS_Store
+data/archive/*
+data/logs/*
+data/config/*.sock
+data/config/*.db
+data/config/settings.yaml

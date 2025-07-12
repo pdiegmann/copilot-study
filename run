@@ -1,0 +1,8 @@
+#!/bin/bash
+
+LOG_LVL="${LOG_LEVEL:-debug}"
+
+rm -f ./data/logs/*.log
+
+LOG_LEVEL=${LOG_LVL} docker compose down 2> /dev/null
+LOG_LEVEL=${LOG_LVL} docker compose up

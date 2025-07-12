@@ -1,0 +1,54 @@
+# Git
+.git
+.gitignore
+
+# Node modules
+node_modules
+
+# Bun lockfile (already copied in Dockerfile before install)
+# bun.lockb # This is the binary lockfile, bun.lock (text) is usually committed
+
+# TypeScript build output (if any, though not explicitly used in this project's start script)
+dist
+out
+build
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE / Editor specific files
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.sublime-workspace
+*.sublime-project
+
+# Runtime data / Output data
+crawled_data/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Test reports
+coverage
+.nyc_output

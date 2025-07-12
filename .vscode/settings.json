@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.ts": "typescript",
+    "*.svelte.ts": "svelte"
+  },
+  "material-icon-theme.files.associations": {
+    "*.svelte.ts": "svelte",
+    "*.ts": "typescript"
+  }
+}
