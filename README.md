@@ -1,6 +1,6 @@
 # Copima: GitLab Crawler Study Platform
 
-Copima is a modular platform for conducting, managing, and analyzing privacy-focused GitLab crawler studies. It consists of two main components—**copilot-study** and **crawlz**—orchestrated via Docker Compose for seamless deployment and integration.
+Copima is a modular platform for conducting, managing, and analyzing privacy-focused GitLab crawler studies. It consists of two main components—**web** and **crawler**—orchestrated via Docker Compose for seamless deployment and integration.
 
 ---
 
@@ -8,14 +8,12 @@ Copima is a modular platform for conducting, managing, and analyzing privacy-foc
 
 ```
 /
-├── copilot-study/   # Svelte-based participant & admin UI, socket server
+├── web/   # Svelte-based participant & admin UI, socket server
 │   ├── README.md
 │   └── docs/
-├── crawlz/          # Bun-based, privacy-focused GitLab crawler
+├── crawler/          # Bun-based, privacy-focused GitLab crawler
 │   ├── README.md
 │   └── docs/
-├── analysis/        # (Optional) Analysis scripts and reports
-├── data/            # Persistent data storage (mounted as Docker volumes)
 ├── docker-compose.yml
 └── README.md        # (You are here)
 ```
@@ -24,7 +22,7 @@ Copima is a modular platform for conducting, managing, and analyzing privacy-foc
 
 ## Components Overview
 
-### 1. copilot-study
+### 1. web
 
 - **Type:** SvelteKit web application & integrated Bun-based socket server
 - **Purpose:**  
@@ -55,23 +53,23 @@ Copima is a modular platform for conducting, managing, and analyzing privacy-foc
   - Bun backend (socket server, REST API, integrated into the web-app)
   - Connects to a persistent database (via Docker volume)
 - **Further Documentation:**  
-  See [`copilot-study/README.md`](copilot-study/README.md) and [`copilot-study/docs/`](copilot-study/docs/).
+  See [`web/README.md`](web/README.md) and [`web/docs/`](web/docs/).
 
-### 2. crawlz
+### 2. crawler
 
 - **Type:** Bun-based CLI application
-- **Purpose:** Privacy-focused GitLab crawler that executes study jobs as configured by copilot-study. Collects, processes, and stores data according to strict privacy guidelines.
+- **Purpose:** Privacy-focused GitLab crawler that executes study jobs as configured by web. Collects, processes, and stores data according to strict privacy guidelines.
 - **Key Features:**
   - Configurable crawling scopes and schedules
   - Privacy-preserving data collection and storage
   - Healthchecks and robust error handling
-  - Communicates with copilot-study via sockets
+  - Communicates with web via sockets
 - **Architecture:**  
   - Bun runtime (TypeScript/JavaScript)
   - Modular core, API, and storage layers
   - Uses Docker volumes for persistent data
 - **Further Documentation:**  
-  See [`crawlz/README.md`](crawlz/README.md) and [`crawlz/docs/`](crawlz/docs/).
+  See [`crawler/README.md`](crawler/README.md) and [`crawler/docs/`](crawler/docs/).
 
 ---
 
@@ -126,8 +124,8 @@ The recommended way to run Copima is via Docker Compose, which orchestrates both
 ### 3. Docker Compose Details
 
 - **Services:**
-  - `copilot-study`: Exposes participant/admin UI and socket server (default port: 5173)
-  - `crawlz`: Runs the crawler engine (default port: 3000)
+  - `web`: Exposes participant/admin UI and socket server (default port: 5173)
+  - `crawler`: Runs the crawler engine (default port: 3000)
 - **Volumes:**
   - Persistent storage for database, logs, and crawl data (`data/` directory)
 - **Environment Variables:**
@@ -141,12 +139,12 @@ For detailed configuration, see comments in [`docker-compose.yml`](docker-compos
 
 ## Further Documentation
 
-- **copilot-study:**  
-  - [`copilot-study/README.md`](copilot-study/README.md)  
-  - [`copilot-study/docs/`](copilot-study/docs/)
-- **crawlz:**  
-  - [`crawlz/README.md`](crawlz/README.md)  
-  - [`crawlz/docs/`](crawlz/docs/)
+- **web:**  
+  - [`web/README.md`](web/README.md)  
+  - [`web/docs/`](web/docs/)
+- **crawler:**  
+  - [`crawler/README.md`](crawler/README.md)  
+  - [`crawler/docs/`](crawler/docs/)
 - **Analysis scripts:**  
   - [`analysis/README.md`](analysis/README.md)
 

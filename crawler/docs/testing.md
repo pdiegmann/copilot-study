@@ -2,7 +2,7 @@
 
 **STILL WORK IN PROGRESS**
 
-Crawlz includes comprehensive testing to ensure reliability, correctness, and privacy compliance.
+"Crawler" includes comprehensive testing to ensure reliability, correctness, and privacy compliance.
 
 ## Test Types
 

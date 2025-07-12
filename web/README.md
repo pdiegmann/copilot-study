@@ -1,12 +1,12 @@
-# copilot-study
+# web
 
-This repository contains everything needed to build and run the copilot-study Svelte project.
+This repository contains everything needed to build and run the web Svelte project.
 
 ---
 
 ## Overview
 
-**copilot-study** is the primary entrypoint for study participants in the Copima platform. It provides a participant-centric web interface for authorizing data collection, tracking progress, and downloading collected data. The application also includes an admin UI for managing studies and monitoring crawler jobs.
+**web** is the primary entrypoint for study participants in the Copima platform. It provides a participant-centric web interface for authorizing data collection, tracking progress, and downloading collected data. The application also includes an admin UI for managing studies and monitoring crawler jobs.
 
 ---
 
@@ -100,7 +100,7 @@ bun run preview
 
 ## Running the Backend with Docker
 
-You can run the copilot-study backend using Docker for a consistent and isolated environment.
+You can run the web backend using Docker for a consistent and isolated environment.
 
 ### Prerequisites
 
@@ -113,7 +113,7 @@ You can run the copilot-study backend using Docker for a consistent and isolated
 #### 1. Build the Docker image
 
 ```bash
-docker build -t copilot-study-backend .
+docker build -t web-backend .
 ```
 
 #### 2. Run with Docker Compose
@@ -125,14 +125,14 @@ version: "3.8"
 services:
   surveytool:
     build: .
-    image: copilot-study-backend
-    container_name: copilot-study-backend
+    image: web-backend
+    container_name: web-backend
     ports:
       - "3000:3000"
     environment:
       - LOG_LEVEL=info
       - BETTER_AUTH_SECRET=your-secret
-      - SOCKET_PATH=/tmp/copilot-study.sock
+      - SOCKET_PATH=/tmp/web.sock
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
       - BACKUP_PATH=/home/bun/data/backup
     volumes:

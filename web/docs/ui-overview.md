@@ -1,6 +1,6 @@
-# copilot-study: UI Overview
+# web: UI Overview
 
-This document describes the user-centric self-service portal and the administration UI for the copilot-study project, summarizing their main features, navigation, and user flows.
+This document describes the user-centric self-service portal and the administration UI for the web project, summarizing their main features, navigation, and user flows.
 
 ---
 
@@ -20,7 +20,7 @@ The self-service portal is designed for study participants and regular users. It
 
 ### User Flows
 
-1. **Authentication**: Users log in via [`/login`](copilot-study/src/routes/login/+page.svelte) and are redirected to the dashboard.
+1. **Authentication**: Users log in via [`/login`](web/src/routes/login/+page.svelte) and are redirected to the dashboard.
 2. **Navigating Study Areas**: Select or view assigned area via `/areas`.
 3. **Managing Jobs**: Access `/jobs` to see tasks and track progress.
 4. **Viewing Study Information**: Access study details and progress.
@@ -46,7 +46,7 @@ The administration UI is for system administrators and study coordinators, provi
 
 ### Admin Flows
 
-1. **Admin Authentication**: Log in via [`/admin/sign-in`](copilot-study/src/routes/admin/sign-in/+page.svelte).
+1. **Admin Authentication**: Log in via [`/admin/sign-in`](web/src/routes/admin/sign-in/+page.svelte).
 2. **Job & Area Management**: Create, assign, and monitor jobs and areas.
 3. **User Management**: Oversee user accounts and permissions.
 4. **System Maintenance**: Use settings, backup, and crawler controls.
@@ -61,5 +61,5 @@ The administration UI is for system administrators and study coordinators, provi
 | Administration    | `/admin`, `/admin/sign-in`, `/admin/jobs`, `/admin/areas`, `/admin/accounts`, `/admin/settings`, `/admin/backup`, `/admin/crawler`, `/admin/tokens` | Admin authentication, job/area/user management, system settings, backup, crawler control, API tokens |
 
 **References:**  
-- Self-Service Portal routes: [`copilot-study/src/routes/`](copilot-study/src/routes/)
-- Admin UI routes: [`copilot-study/src/routes/admin/`](copilot-study/src/routes/admin/)
+- Self-Service Portal routes: [`web/src/routes/`](web/src/routes/)
+- Admin UI routes: [`web/src/routes/admin/`](web/src/routes/admin/)

@@ -1,6 +1,6 @@
 # Socket Protocol
 
-Crawlz uses a Unix socket for all communication with the external web application. This protocol replaces HTTP polling and enables real-time, low-latency job management and progress reporting.
+"Crawler" uses a Unix socket for all communication with the external web application. This protocol replaces HTTP polling and enables real-time, low-latency job management and progress reporting.
 
 ## Message Types
 

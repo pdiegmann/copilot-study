@@ -1,6 +1,6 @@
 # Architecture Overview
 
-Crawlz is a modular GitLab crawler designed for scientific data collection, privacy, and reliability. It is built with Bun and TypeScript, and communicates with an external web application via Unix socket.
+"Crawler" is a modular GitLab crawler designed for scientific data collection, privacy, and reliability. It is built with Bun and TypeScript, and communicates with an external web application via Unix socket.
 
 ## Core Components
 
@@ -23,7 +23,7 @@ Crawlz is a modular GitLab crawler designed for scientific data collection, priv
 ## Directory Structure
 
 ```
-crawlz/
+crawler/
 ├── src/
 │   ├── api/          # GitLab API integration and processors
 │   ├── core/         # Socket manager and job processor

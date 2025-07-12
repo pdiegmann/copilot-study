@@ -1,7 +1,7 @@
 services:
   web:
     build:
-      context: ./copilot-study
+      context: ./web
     container_name: web
     ports:
       - "3000:3000"
@@ -9,7 +9,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./data:/home/bun/data
       - ./data/config:/home/bun/data/config
-      - ./copilot-study:/usr/src/app/
+      - ./web:/usr/src/app/
     environment:
       - LOG_LEVEL=info # valid options: (undefined) | info | debug | warning | error | fatal
       - BETTER_AUTH_SECRET=ngJuz7MgddaJTjcMpUbdPLEYGjvattDaAVoe4CFbHsrT34hL
@@ -24,27 +24,27 @@ services:
   
   crawler:
     build:
-      context: ./crawlz
+      context: ./crawler
     container_name: crawler
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./data:/home/bun/data
       - ./data/config:/home/bun/data/config
-      - ./crawlz:/usr/src/app/
+      - ./crawler:/usr/src/app/
     environment:
       - LOG_LEVEL=debug # valid options: (undefined) | info | debug | warning | error | fatal
       - DEBUG=true
       - CRAWLER_MODE=socket
       - SOCKET_PATH=/home/bun/data/config/api.sock
-      - CRAWLZ_DATA_ROOT_DIR=/home/bun/data/archive
-      - CRAWLZ_ID_DATABASE_PATH=/home/bun/data/id_database.db
-      - CRAWLZ_MAX_CONCURRENT_TASKS=3
-      - CRAWLZ_IDLE_POLL_INTERVAL_SECONDS=20
-      - CRAWLZ_TASK_QUEUE_URL=unix:/home/bun/data/config/api.sock:/api/internal/jobs/open
-      - CRAWLZ_PROGRESS_API_ENDPOINT=unix:/home/bun/data/config/api.sock:/api/internal/jobs/progress
-      - CRAWLZ_TOKEN_REFRESH_API_ENDPOINT=unix:/home/bun/data/config/api.sock:/api/internal/refresh-token
-      - CRAWLZ_HASHING_SECRET_KEY=1234567890123456789012345678901234567890123456789012345678901234
-      - CRAWLZ_HASHING_ALGORITHM=sha256
+      - CRAWLER_DATA_ROOT_DIR=/home/bun/data/archive
+      - CRAWLER_ID_DATABASE_PATH=/home/bun/data/id_database.db
+      - CRAWLER_MAX_CONCURRENT_TASKS=3
+      - CRAWLER_IDLE_POLL_INTERVAL_SECONDS=20
+      - CRAWLER_TASK_QUEUE_URL=unix:/home/bun/data/config/api.sock:/api/internal/jobs/open
+      - CRAWLER_PROGRESS_API_ENDPOINT=unix:/home/bun/data/config/api.sock:/api/internal/jobs/progress
+      - CRAWLER_TOKEN_REFRESH_API_ENDPOINT=unix:/home/bun/data/config/api.sock:/api/internal/refresh-token
+      - CRAWLER_HASHING_SECRET_KEY=1234567890123456789012345678901234567890123456789012345678901234
+      - CRAWLER_HASHING_ALGORITHM=sha256
     entrypoint: ["./startup-debug.sh"]
 #    depends_on:
 #      web:

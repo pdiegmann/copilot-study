@@ -1,6 +1,6 @@
-# Crawlz GitLab Crawler
+# "Crawler" GitLab Crawler
 
-Crawlz is a Bun-based TypeScript application for scientific and large-scale crawling of GitLab data. It receives jobs from an external web application via Unix socket, processes them with robust anonymization, and stores results in a structured, privacy-preserving format.
+"Crawler" is a Bun-based TypeScript application for scientific and large-scale crawling of GitLab data. It receives jobs from an external web application via Unix socket, processes them with robust anonymization, and stores results in a structured, privacy-preserving format.
 
 ## Features
 
@@ -45,14 +45,14 @@ bun run src/index.ts
 
 ### Running with Docker
 
-Crawlz can be run in a containerized environment using Docker. This is the recommended way to ensure consistent dependencies and isolation.
+"Crawler" can be run in a containerized environment using Docker. This is the recommended way to ensure consistent dependencies and isolation.
 
 #### Build the Docker Image
 
 From the project root, build the image:
 
 ```bash
-docker build -t crawlz ./crawlz
+docker build -t crawler ./crawler
 ```
 
 #### Run with Docker Compose
@@ -63,27 +63,27 @@ A `crawler` service is defined in [`docker-compose.yml`](../docker-compose.yml):
 services:
   crawler:
     build:
-      context: ./crawlz
+      context: ./crawler
     container_name: crawler
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./data:/home/bun/data
       - ./data/config:/home/bun/data/config
-      - ./crawlz:/usr/src/app/
+      - ./crawler:/usr/src/app/
     environment:
       - LOG_LEVEL=debug
       - DEBUG=true
       - CRAWLER_MODE=socket
       - SOCKET_PATH=/home/bun/data/config/api.sock
-      - CRAWLZ_DATA_ROOT_DIR=/home/bun/data/archive
-      - CRAWLZ_ID_DATABASE_PATH=/home/bun/data/id_database.db
-      - CRAWLZ_MAX_CONCURRENT_TASKS=3
-      - CRAWLZ_IDLE_POLL_INTERVAL_SECONDS=20
-      - CRAWLZ_TASK_QUEUE_URL=unix:/home/bun/data/config/api.sock:/api/internal/jobs/open
-      - CRAWLZ_PROGRESS_API_ENDPOINT=unix:/home/bun/data/config/api.sock:/api/internal/jobs/progress
-      - CRAWLZ_TOKEN_REFRESH_API_ENDPOINT=unix:/home/bun/data/config/api.sock:/api/internal/refresh-token
-      - CRAWLZ_HASHING_SECRET_KEY=...
-      - CRAWLZ_HASHING_ALGORITHM=sha256
+      - CRAWLER_DATA_ROOT_DIR=/home/bun/data/archive
+      - CRAWLER_ID_DATABASE_PATH=/home/bun/data/id_database.db
+      - CRAWLER_MAX_CONCURRENT_TASKS=3
+      - CRAWLER_IDLE_POLL_INTERVAL_SECONDS=20
+      - CRAWLER_TASK_QUEUE_URL=unix:/home/bun/data/config/api.sock:/api/internal/jobs/open
+      - CRAWLER_PROGRESS_API_ENDPOINT=unix:/home/bun/data/config/api.sock:/api/internal/jobs/progress
+      - CRAWLER_TOKEN_REFRESH_API_ENDPOINT=unix:/home/bun/data/config/api.sock:/api/internal/refresh-token
+      - CRAWLER_HASHING_SECRET_KEY=...
+      - CRAWLER_HASHING_ALGORITHM=sha256
     entrypoint: ["./startup-debug.sh"]
 ```
 

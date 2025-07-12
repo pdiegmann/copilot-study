@@ -1,6 +1,6 @@
 # Task Types & Mappings
 
-Crawlz processes jobs from the web application by mapping them to internal task types, which define what data to collect from GitLab and how to process it.
+"Crawler" processes jobs from the web application by mapping them to internal task types, which define what data to collect from GitLab and how to process it.
 
 ## Task Type Categories
 

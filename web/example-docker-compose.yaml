@@ -1,7 +1,7 @@
 services:
   surveytool:
     container_name: surveytool
-    #    image: phennel/copilot-study:latest
+    #    image: phennel/web:latest
     build: .
     volumes:
       - /etc/localtime:/etc/localtime:ro

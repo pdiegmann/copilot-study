@@ -49,7 +49,7 @@ DATABASE_URL=postgresql://user:password@localhost:5432/copilot_study_dev
 **Example (production):**
 ```bash
 NODE_ENV=production
-SOCKET_PATH=/var/run/copilot-study/crawler.sock
+SOCKET_PATH=/var/run/web/crawler.sock
 SOCKET_LOG_LEVEL=info
 SOCKET_MAX_CONNECTIONS=10
 DATABASE_URL=postgresql://prod_user:secure_password@db-server:5432/copilot_study_prod
@@ -87,8 +87,8 @@ DATABASE_URL=postgresql://prod_user:secure_password@db-server:5432/copilot_study
 ### Development
 
 ```bash
-git clone <repository-url> copilot-study
-cd copilot-study
+git clone <repository-url> web
+cd web
 npm install
 cp .env.example .env.development
 npm run db:migrate
@@ -114,7 +114,7 @@ You can deploy the backend using Docker and Docker Compose for a reproducible en
 #### Build and Run
 
 ```bash
-docker build -t copilot-study-backend .
+docker build -t web-backend .
 docker compose -f example-docker-compose.yaml up -d
 ```
 

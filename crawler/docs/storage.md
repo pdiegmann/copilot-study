@@ -1,6 +1,6 @@
 # Data Storage
 
-Crawlz stores all crawled and anonymized data in a structured, append-only format optimized for scientific analysis and privacy.
+"Crawler" stores all crawled and anonymized data in a structured, append-only format optimized for scientific analysis and privacy.
 
 ## Storage Structure
 

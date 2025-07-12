@@ -1,6 +1,6 @@
 # Error Handling
 
-Crawlz is designed for resilience and transparency, providing detailed diagnostics and robust error recovery throughout the crawling process.
+"Crawler" is designed for resilience and transparency, providing detailed diagnostics and robust error recovery throughout the crawling process.
 
 ## Error Types
 

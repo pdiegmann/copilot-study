@@ -225,7 +225,7 @@ export class DiscoveryHandler {
     }
 
     // Only include commands supported by both the backend (CrawlCommand) and the crawler (GitLabTaskType).
-    // See: copilot-study/src/lib/types.ts and crawlz/src/types/gitlab-task-unified.ts
+    // See: web/src/lib/types.ts and crawler/src/types/gitlab-task-unified.ts
     // This avoids spawning jobs that will be skipped as "Unknown command" by the backend or not handled by the crawler.
     const dataTypesToCrawl: CrawlCommand[] = [
       CrawlCommand.issues,            // FETCH_ISSUES

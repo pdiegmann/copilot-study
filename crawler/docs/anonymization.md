@@ -1,6 +1,6 @@
 # Anonymization & Privacy
 
-Crawlz is designed with privacy by default, ensuring that all personally identifiable information (PII) is anonymized before storage or further processing.
+"Crawler" is designed with privacy by default, ensuring that all personally identifiable information (PII) is anonymized before storage or further processing.
 
 ## Anonymization Process
 

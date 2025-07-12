@@ -1,6 +1,6 @@
 # Configuration Reference
 
-Crawlz is configured via environment variables and optional parameters. This allows flexible deployment in different environments.
+"Crawler" is configured via environment variables and optional parameters. This allows flexible deployment in different environments.
 
 ## Environment Variables
 
@@ -32,7 +32,7 @@ Crawlz is configured via environment variables and optional parameters. This all
 ## Example `.env` File
 
 ```env
-SOCKET_PATH=/tmp/crawlz.sock
+SOCKET_PATH=/tmp/crawler.sock
 DATA_DIR=./data
 LOOKUP_DB_PATH=./data/lookup.db
 # When set, disables all mapping retention (not even in memory) and disables reverse lookups
@@ -65,7 +65,7 @@ const CONFIG = {
 
 ## Docker Deployment
 
-Crawlz is fully containerized and can be run as a Docker service. The recommended way is via Docker Compose.
+"Crawler" is fully containerized and can be run as a Docker service. The recommended way is via Docker Compose.
 
 ### Docker Environment Variables
 
@@ -75,19 +75,19 @@ When running in Docker, the following environment variables are commonly set in 
 - `DEBUG`: Enables debug mode if set to `true`
 - `CRAWLER_MODE`: Set to `socket` for socket-based job reception
 - `SOCKET_PATH`: Path to the Unix socket for job communication (default: `/home/bun/data/config/api.sock`)
-- `CRAWLZ_DATA_ROOT_DIR`: Directory for storing crawled data (default: `/home/bun/data/archive`)
-- `CRAWLZ_ID_DATABASE_PATH`: Path to the ID database (default: `/home/bun/data/id_database.db`)
-- `CRAWLZ_MAX_CONCURRENT_TASKS`: Maximum number of concurrent tasks (default: `3`)
-- `CRAWLZ_IDLE_POLL_INTERVAL_SECONDS`: Idle poll interval in seconds (default: `20`)
-- `CRAWLZ_TASK_QUEUE_URL`, `CRAWLZ_PROGRESS_API_ENDPOINT`, `CRAWLZ_TOKEN_REFRESH_API_ENDPOINT`: Internal API endpoints, typically using the Unix socket
-- `CRAWLZ_HASHING_SECRET_KEY`, `CRAWLZ_HASHING_ALGORITHM`: Anonymization settings
+- `CRAWLER_DATA_ROOT_DIR`: Directory for storing crawled data (default: `/home/bun/data/archive`)
+- `CRAWLER_ID_DATABASE_PATH`: Path to the ID database (default: `/home/bun/data/id_database.db`)
+- `CRAWLER_MAX_CONCURRENT_TASKS`: Maximum number of concurrent tasks (default: `3`)
+- `CRAWLER_IDLE_POLL_INTERVAL_SECONDS`: Idle poll interval in seconds (default: `20`)
+- `CRAWLER_TASK_QUEUE_URL`, `CRAWLER_PROGRESS_API_ENDPOINT`, `CRAWLER_TOKEN_REFRESH_API_ENDPOINT`: Internal API endpoints, typically using the Unix socket
+- `CRAWLER_HASHING_SECRET_KEY`, `CRAWLER_HASHING_ALGORITHM`: Anonymization settings
 
 ### Docker Volumes
 
 - `/etc/localtime:/etc/localtime:ro`: Synchronizes container time with the host
 - `./data:/home/bun/data`: Persists logs, archive, and config outside the container
 - `./data/config:/home/bun/data/config`: Ensures configuration is available and persistent
-- `./crawlz:/usr/src/app/`: Mounts the source code for development or live reload
+- `./crawler:/usr/src/app/`: Mounts the source code for development or live reload
 
 ### Running
 
